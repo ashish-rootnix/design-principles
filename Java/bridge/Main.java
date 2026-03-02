@@ -9,10 +9,21 @@ public class Main {
         System.out.println("---");
 
         // Sweap engine without changing Electric Car at all
-        Car ecar2 = new ElectricCar(new CombutionEngine());
+        // Heare LSP is failing as Elecric car is able to inject combution engine, logically its wrong
+ 
+        // Resolved using addition interface specific to respective engines        
+        //Car ecar2 = new ElectricCar(new CombutionEngine()); // Won't compile
+        Car ecar2 = new ElectricCar(new ElectricEngine());
         ecar2.drive();
 
         System.out.println("---");
 
+        // Still main() knowns concrete classese - its DIP violation
+        // This DIP violation is resolved using Factory class
+        Car factElecCar = CarFactory.createElectricCar();
+        factElecCar.drive();
+
+        Car factCombCar = CarFactory.createCombutionCar();
+        factCombCar.drive();        
     }
 }

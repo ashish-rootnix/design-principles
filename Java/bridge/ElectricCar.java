@@ -8,7 +8,8 @@ public class ElectricCar extends Car{
         //super(engine_);
     }
 
-    public ElectricCar(Engine engine_)
+    //public ElectricCar(Electric engine_) // This violates LSP
+    public ElectricCar(ElectricCapable engine_) 
     {
         //super(new ElectricEngine()); // Hardcoded dependency //Creates dependency injection violation
         super(engine_);
