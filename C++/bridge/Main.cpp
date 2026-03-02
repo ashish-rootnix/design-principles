@@ -11,7 +11,7 @@ int main()
     std::cout << std::endl;
     // Heare LSP is failing as Elecric car is able to inject combution engine, logically its wrong
     //Here Logical LSK is fixed due to multiple inheritance
-    // std::unique_ptr<Car> ecar2 = std::make_unique<ElectricCar>(std::make_unique<CombutionEngine>());
+    //std::unique_ptr<Car> ecarx = std::make_unique<ElectricCar>(std::make_unique<CombutionEngine>());
     std::unique_ptr<Car> ecar2 = std::make_unique<ElectricCar>(std::make_unique<ElectricEngine>());
     ecar2->drive();
 
@@ -28,7 +28,7 @@ int main()
     std::unique_ptr<Car> fleet[] = {
         CarFactory::createElectricCar(),
         CarFactory::createCombutionCar(),
-        CarFactory::createCarWithEngine(std::make_unique<ElectricEngine>())
+        CarFactory::createElectricCarWith(std::make_unique<ElectricEngine>())
     };
 
     for(const auto& car : fleet)

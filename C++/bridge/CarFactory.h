@@ -19,7 +19,7 @@ class CarFactory
             return std::make_unique<CombutionCar>(std::make_unique<CombutionEngine>());
         }
         
-        static std::unique_ptr<Car>  createCarWithEngine(std::unique_ptr<Engine>engine)
+        static std::unique_ptr<Car>  createElectricCarWith(std::unique_ptr<ElectricCompatableEngine>engine)
         {
             return std::make_unique<ElectricCar>(std::move(engine));
         }

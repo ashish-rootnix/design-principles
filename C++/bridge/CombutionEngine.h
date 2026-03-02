@@ -2,10 +2,9 @@
 #define _COMBUTION_ENGINE_H
 
 #include <iostream>
-#include "RefuelableEngine.h"
-#include "Engine.h"
+#include "CombutionCompatableEngine.h"
 
-class CombutionEngine : public Engine, public RefuelableEngine
+class CombutionEngine : public CombutionCompatableEngine
 {
  public:
    virtual void start() override

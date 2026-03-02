@@ -13,7 +13,7 @@ class CombutionCar : public Car
    {}
 
    // This constructor added to avoid - dependendcy injection violation as in above constructor
-   CombutionCar(std::unique_ptr<Engine> engine_):Car(std::move(engine_))
+   CombutionCar(std::unique_ptr<CombutionCompatableEngine> engine_):Car(std::move(engine_))
    {}
 
    void drive() override

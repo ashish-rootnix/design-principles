@@ -1,4 +1,4 @@
-Structural Dessgin Pattern
+Structural Design Pattern
 
 Also known as Handle/Body 
 
@@ -7,9 +7,9 @@ Intent:
 
     Separates the implementation hierarchy for a type from its subtype hierarchy.
     
-    Its not about bridging two classes closely together instead loosly coupling through abstraction.
+    Its not about bridging two classes closely together instead loosely coupling through abstraction.
 
-    abstraction   <>impl-------->     implementator
+    abstraction   <>impl-------->     implementer
     -----------                     --------------
     operation()                     operationImpl()
         impl->operationImpl()             ^
@@ -27,7 +27,7 @@ refinredAbsraction
 
 
 Consequences:
-    1) Decoupling interfaces and implementation. Implementation is not bound permanetly to an 
+    1) Decoupling interfaces and implementation. Implementation is not bound permanently to an 
     interface. Implementation of abstraction can be configured at run-time.
         This decoupling eleminates compile-time dependencies on the implementation.
     Changing an implementation class doesn't require recompiling the abstraction class and clients.
@@ -35,7 +35,7 @@ Consequences:
     3) Hiding implementation details from client.    
 
 Single Resposibility Principle (SRP)
-    Bridge seprates abstraction logic and implementatio logic.
+    Bridge seprates abstraction logic and implementation logic.
 
 Open/Closed Principle (OCP)
     Adding new abstraction without modifying implementation
@@ -48,9 +48,9 @@ Interface Segregation Principle (ISP)
     Bridges only uses small, focused implementation interfaces.
 
 Dependency Inversion Principle (DIP)
-    Abstrction depends on implementation interface, not on concrete implementation.
+    Abstraction depends on implementation interface, not on concrete implementation.
 
-Don't Repeat Yourseld (DRY)
+Don't Repeat Yourself (DRY)
     Eliminates duplicate logic.
 
 Keep It Simple And Stupid (KISS)
@@ -59,3 +59,36 @@ Keep It Simple And Stupid (KISS)
 You Aren't Gonna Need It (YAGNI)
     When both abstraction and implementation will vary independently.
     Use only when independent variation is expected
+    
+    
+How SOLID is improved in this code?
+1) DIP
+	ElectricCar Constructor is directly passing newly created engine to Car base class i.e. hard coded
+	Whenever any change in Engine Type, ElectricCar class needs modifications --> OCP violation	
+	Also Dependency Injection issue, ElectricCar creating dependency on hard coded engine type
+
+	To fix these issues, ElectricCar constructor is parameterized with injected engine
+2) Liskov Substitution Violation
+	In main function, ElectricCar could able to pass combustion engine or vice versa, which is logically incorrect
+	that electic car having combustion engine.
+	Its violating LSP.
+	So another abstract classes created such as ElectricCompatableEngine and CombustionCompatableEngine as empty classes.
+	ElectricCompatableEngine inherit from Engine and RechargableEngine class and 
+	CombustionCompatableEngine Engine inherits from Engine and RefuelableEngine engine.
+
+	Now ElctricCar constructor won't accept combustionEngine as input argument 
+	
+	
+3) ISP Violation
+	As engine has start and stop functions, adding refuel and recharge functions to engine, 
+	This will force electric engine to implement refuel function, which violates ISP.
+	
+	So Rechargable and Refeulable abstract classes with specific interfaces is implemented,
+	ElectricSpecificEngine inherits Engine and Rechargable so electric engine implements electic specific interfaces.
+	
+4) DIP again: 
+	As main function Cars are created using concrte engine classes.
+	So CarFactory class is created to avoid direct access to ElectricEngine or CombutionEngine.
+	So direct access to concrete classes is avoided.
+	
+	

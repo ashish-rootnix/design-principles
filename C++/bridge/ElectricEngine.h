@@ -2,10 +2,9 @@
 #define _ELECTRIC_ENGINE_H
 
 #include <iostream>
-#include "RechargableEngine.h"
-#include "Engine.h"
+#include "ElectricCompatableEngine.h"
 
-class ElectricEngine : public Engine, public RechargableEngine
+class ElectricEngine : public ElectricCompatableEngine
 {
  public:
    virtual void start() override
