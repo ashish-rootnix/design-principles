@@ -1,0 +1,61 @@
+Structural Dessgin Pattern
+
+Also known as Handle/Body 
+
+Intent:
+    Decouple an abstraction from its implementation so that two can vary independently.
+
+    Separates the implementation hierarchy for a type from its subtype hierarchy.
+    
+    Its not about bridging two classes closely together instead loosly coupling through abstraction.
+
+    abstraction   <>impl-------->     implementator
+    -----------                     --------------
+    operation()                     operationImpl()
+        impl->operationImpl()             ^
+        ^                                 |
+        |                       --------------------- 
+        |                       |                   |
+        |                       |                   |
+        |               concreteImplmentorA    ConcreteImplementorB
+        |                operationImpl()         operationImpl()
+        |
+refinredAbsraction
+
+
+
+
+
+Consequences:
+    1) Decoupling interfaces and implementation. Implementation is not bound permanetly to an 
+    interface. Implementation of abstraction can be configured at run-time.
+        This decoupling eleminates compile-time dependencies on the implementation.
+    Changing an implementation class doesn't require recompiling the abstraction class and clients.
+    2) Improved extensibility. It can extends abstraction and implementor hierarchies independently.
+    3) Hiding implementation details from client.    
+
+Single Resposibility Principle (SRP)
+    Bridge seprates abstraction logic and implementatio logic.
+
+Open/Closed Principle (OCP)
+    Adding new abstraction without modifying implementation
+    Adding new implementation without modifying abstraction
+
+LiskovSubstitution Principle (LSP)
+    Abstraction and implementation depends on interface.
+
+Interface Segregation Principle (ISP)
+    Bridges only uses small, focused implementation interfaces.
+
+Dependency Inversion Principle (DIP)
+    Abstrction depends on implementation interface, not on concrete implementation.
+
+Don't Repeat Yourseld (DRY)
+    Eliminates duplicate logic.
+
+Keep It Simple And Stupid (KISS)
+    Avoid deep inheritances
+
+You Aren't Gonna Need It (YAGNI)
+    When both abstraction and implementation will vary independently.
+    Use only when independent variation is expected
