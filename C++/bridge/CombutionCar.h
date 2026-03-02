@@ -1,24 +1,25 @@
-#ifndef _ELECTRIC_CAR_H
-#define _ELECTRIC_CAR_H
+#ifndef _COMBUTION_CAR_H
+#define _COMBUTION_CAR_H
 
 #include <iostream>
 #include "Car.h"
+#include "CombutionEngine.h"
 #include "ElectricEngine.h"
 
-class ElectricCar : public Car
+class CombutionCar : public Car
 {
  public:
-   ElectricCar():Car(std::make_unique<ElectricEngine>())
+   CombutionCar():Car(std::make_unique<CombutionEngine>())
    {}
 
    // This constructor added to avoid - dependendcy injection violation as in above constructor
-   ElectricCar(std::unique_ptr<Engine> engine_):Car(std::move(engine_))
+   CombutionCar(std::unique_ptr<Engine> engine_):Car(std::move(engine_))
    {}
 
    void drive() override
    {
         this->getEngine()->start();
-        std::cout << "Driving a Electric Car !!!" << std::endl;
+        std::cout << "Driving a Combution Car !!!" << std::endl;
         this->getEngine()->stop();        
    }
    // ...
