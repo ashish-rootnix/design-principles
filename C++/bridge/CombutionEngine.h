@@ -1,5 +1,5 @@
-#ifndef _ELECTRIC_ENGINE_H
-#define _ELECTRIC_ENGINE_H
+#ifndef _COMBUTION_ENGINE_H
+#define _COMBUTION_ENGINE_H
 
 #include <iostream>
 #include "Engine.h"
