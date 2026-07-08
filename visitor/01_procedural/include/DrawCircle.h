@@ -1,0 +1,9 @@
+//---- <DrawCircle.h> ----------------
+#ifndef DRAW_CIRCLE_H
+#define DRAW_CIRCLE_H
+
+class Circle;
+
+void draw(Circle const& c);
+
+#endif // DRAW_CIRCLE_H
